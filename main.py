@@ -451,8 +451,8 @@ async def done_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML"
     )
 
-    # 7. Generate Website HTML Snippet (UPDATED – REQUIRED)
-     website_code = (
+     # 7. Generate Website HTML Snippet (UPDATED TO YOUR REQUIRED FORMAT)
+    website_code = (
         f'<div class="quiz" data-type="paid">\n'
         f'    <div class="quiz-left">\n'
         f'      <div class="quiz-title">{session["quiz_title"]} <span class="quiz-badge badge-paid">PAID</span></div>\n'
@@ -463,8 +463,9 @@ async def done_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f'    </div>\n'
         f'</div>'
     )
-    
 
+
+    # ✅ ESCAPE THE HTML CODE SO TELEGRAM SENDS IT AS TEXT
     escaped_code = html.escape(website_code)
 
     # 8. Send the Snippet Message
@@ -475,6 +476,7 @@ async def done_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     reset_session(uid)
+
 
 # ================= MAIN =================
 def main():
