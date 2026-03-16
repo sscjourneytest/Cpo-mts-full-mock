@@ -262,16 +262,16 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         session["sections"] = [
             {"name": "REASONING", "start": 1, "end": 50, "time": 30},
             {"name": "GENERAL AWARENESS", "start": 51, "end": 100, "time": 30},
-            {"name": "QUANTITATIVE APTITUDE", "start": 101, "end": 150, "time": 30},
-            {"name": "ENGLISH LANGUAGE", "start": 151, "end": 200, "time": 30}
+            {"name": "MATH", "start": 101, "end": 150, "time": 30},
+            {"name": "ENGLISH", "start": 151, "end": 200, "time": 30}
         ]
         session["step"] = "TITLE"
         await query.edit_message_text(
             "✅ Sections Selected:\n"
             "1. REASONING(1-50)-30\n"
             "2. GENERAL AWARENESS(51-100)-30\n"
-            "3. QUANTITATIVE APTITUDE(101-150)-30\n"
-            "4. ENGLISH LANGUAGE(151-200)-30\n\n"
+            "3. MATH(101-150)-30\n"
+            "4. ENGLISH(151-200)-30\n\n"
             "Now send the **Quiz Title**."
         )
 
