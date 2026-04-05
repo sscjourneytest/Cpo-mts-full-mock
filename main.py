@@ -450,13 +450,21 @@ async def done_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         caption=caption,
         parse_mode="HTML"
     )
-     # 7. Generate Website HTML Snippet (SINGLE LINE SKELETON FORMAT)
-    # This matches your requirement: <div class="quiz" data-type="paid" data-id="..." data-title="..."></div>
+    # Calculate Total Marks
+    total_qs = len(question_objects)
+    total_marks = total_qs * int(session["correct_score"])
+
+    # Updated Format
     website_code = (
-        f'<div class="quiz" data-type="paid" '
-        f'data-id="{session["quiz_id"]}" '
-        f'data-title="{session["quiz_title"]}"></div>'
+        f'{{"id": "{session["quiz_id"]}", '
+        f'"title": "{session["quiz_title"]}", '
+        f'"type": "paid", '
+        f'"releaseDate": "", '
+        f'"qs": {total_qs}, '
+        f'"time": "{total_time_min} Min", '
+        f'"marks": {total_marks}}}'
     )
+   
 
     # ✅ ESCAPE THE HTML CODE SO TELEGRAM SENDS IT AS TEXT
     escaped_code = html.escape(website_code)
